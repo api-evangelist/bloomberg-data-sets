@@ -1,107 +1,62 @@
+aid: bloomberg-data-sets
 name: Bloomberg Data Sets
-description: Bloomberg provides comprehensive financial data, analytics, and news services through various APIs and data feeds, serving financial professionals worldwide
-image: https://www.bloomberg.com/company/wp-content/uploads/sites/2/2023/01/Bloomberg-Logo.png
-created: '2024'
-modified: '2024'
-specificationVersion: '0.18'
-url: https://www.bloomberg.com/professional/product/data-management/
-apis:
-- name: Bloomberg Data API
-  description: Provides programmatic access to Bloomberg's extensive financial data including market data, reference data, historical data, and real-time information
-  image: https://www.bloomberg.com/company/wp-content/uploads/sites/2/2023/01/Bloomberg-Logo.png
-  baseURL: https://api.bloomberg.com
-  humanURL: https://www.bloomberg.com/professional/support/api-library/
-  tags:
-  - Financial Data
+description: >-
+  Bloomberg provides comprehensive financial data, analytics, and news services
+  through various APIs and data feeds, serving financial professionals worldwide.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Financial Services
   - Market Data
-  - Real-time
-  - Historical Data
-  - Reference Data
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/support/api-library/
-  - type: Authentication
-    url: https://www.bloomberg.com/professional/support/api-library/#authentication
-  - type: Pricing
-    url: https://www.bloomberg.com/professional/products/
-  - type: Terms of Service
-    url: https://www.bloomberg.com/notices/tos/
-- name: Bloomberg Terminal Connect API
-  description: Enables integration with Bloomberg Terminal functionality including market monitors, portfolio analysis, and trading tools
-  image: https://www.bloomberg.com/company/wp-content/uploads/sites/2/2023/01/Bloomberg-Logo.png
-  baseURL: https://terminal.bloomberg.com/api
-  humanURL: https://www.bloomberg.com/professional/product/bloomberg-terminal/
-  tags:
-  - Bloomberg Terminal
-  - Trading
-  - Portfolio Management
+  - Data Sets
   - Analytics
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/support/api-library/
-  - type: SDK
-    url: https://www.bloomberg.com/professional/support/api-library/#downloads
-- name: Bloomberg Enterprise Access Point (BEAP)
-  description: Server-based API solution for accessing Bloomberg data across an organization with centralized license management
-  image: https://www.bloomberg.com/company/wp-content/uploads/sites/2/2023/01/Bloomberg-Logo.png
-  baseURL: https://beap.bloomberg.com
-  humanURL: https://www.bloomberg.com/professional/product/enterprise-access-point/
-  tags:
-  - Enterprise
-  - Server API
-  - Bulk Data
-  - Data Distribution
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/support/api-library/
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: bloomberg-data-sets:bloomberg-data-api
+    name: Bloomberg Data API
+    description: >-
+      Provides programmatic access to Bloomberg's extensive financial data
+      including market data, reference data, historical data, and real-time
+      information.
+    humanURL: https://www.bloomberg.com/professional/support/api-library/
+    tags:
+      - Financial Data
+      - Market Data
+      - Real-time
+      - Historical Data
+      - Reference Data
+    properties:
+      - type: Documentation
+        url: https://www.bloomberg.com/professional/support/api-library/
+  - aid: bloomberg-data-sets:bloomberg-data-license
+    name: Bloomberg Data License
+    description: >-
+      Subscription-based service providing bulk downloads of historical and
+      reference data for quantitative analysis and research.
+    humanURL: https://www.bloomberg.com/professional/products/data/data-management/data-license/
+    tags:
+      - Bulk Data
+      - Historical Data
+      - Quantitative Research
+      - Data Feeds
+    properties:
+      - type: Documentation
+        url: https://www.bloomberg.com/professional/products/data/data-management/data-license/
+common:
+  - type: Portal
+    url: https://www.bloomberg.com/professional/
   - type: Support
     url: https://www.bloomberg.com/professional/support/
-- name: Bloomberg Data License
-  description: Subscription-based service providing bulk downloads of historical and reference data for quantitative analysis and research
-  image: https://www.bloomberg.com/company/wp-content/uploads/sites/2/2023/01/Bloomberg-Logo.png
-  humanURL: https://www.bloomberg.com/professional/product/data-license/
-  tags:
-  - Bulk Data
-  - Historical Data
-  - Quantitative Research
-  - Data Feeds
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/product/data-license/
-  - type: Pricing
-    url: https://www.bloomberg.com/professional/products/
-  - type: Data Catalog
-    url: https://www.bloomberg.com/professional/product/data-license/#data-catalog
-- name: Bloomberg B-PIPE
-  description: Real-time and delayed market data feed delivering streaming data for trading applications and market surveillance
-  image: https://www.bloomberg.com/company/wp-content/uploads/sites/2/2023/01/Bloomberg-Logo.png
-  humanURL: https://www.bloomberg.com/professional/product/b-pipe/
-  tags:
-  - Real-time Data
-  - Streaming
-  - Market Feed
-  - Trading Infrastructure
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/product/b-pipe/
-  - type: Technical Specifications
+  - type: Getting Started
     url: https://www.bloomberg.com/professional/support/api-library/
+  - type: Terms of Service
+    url: https://www.bloomberg.com/notices/tos/
+  - type: Privacy Policy
+    url: https://www.bloomberg.com/notices/privacy/
 maintainers:
-- name: Bloomberg L.P.
-  email: support@bloomberg.com
-  url: https://www.bloomberg.com/company/
-common:
-- type: Portal
-  url: https://www.bloomberg.com/professional/
-- type: Support
-  url: https://www.bloomberg.com/professional/support/
-- type: Getting Started
-  url: https://www.bloomberg.com/professional/support/api-library/
-- type: Status
-  url: https://www.bloomberg.com/notices/service-status/
-- type: Terms of Service
-  url: https://www.bloomberg.com/notices/tos/
-- type: Privacy Policy
-  url: https://www.bloomberg.com/notices/privacy/
-- type: Contact
-  url: https://www.bloomberg.com/professional/request-demo/
+  - FN: Kin Lane
+    email: kin@apievangelist.com
