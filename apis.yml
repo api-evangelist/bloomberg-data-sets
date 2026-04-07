@@ -6,10 +6,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Analytics
+  - Data Sets
   - Financial Services
   - Market Data
-  - Data Sets
-  - Analytics
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/apis.yml
 created: '2024-01-01'
@@ -25,9 +25,9 @@ apis:
     humanURL: https://www.bloomberg.com/professional/support/api-library/
     tags:
       - Financial Data
-      - Market Data
-      - Real-time
       - Historical Data
+      - Market Data
+      - Real-Time
       - Reference Data
     properties:
       - type: Documentation
@@ -40,9 +40,9 @@ apis:
     humanURL: https://www.bloomberg.com/professional/products/data/data-management/data-license/
     tags:
       - Bulk Data
+      - Data Feeds
       - Historical Data
       - Quantitative Research
-      - Data Feeds
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/products/data/data-management/data-license/
