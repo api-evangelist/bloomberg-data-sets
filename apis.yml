@@ -4,7 +4,7 @@ description: >-
   Bloomberg provides comprehensive financial data, analytics, and news services
   through various APIs and data feeds, serving financial professionals worldwide.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Analytics
   - Data Sets
