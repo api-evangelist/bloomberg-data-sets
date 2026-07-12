@@ -47,6 +47,10 @@ apis:
       - type: Documentation
         url: https://www.bloomberg.com/professional/products/data/data-management/data-license/
 common:
+  - type: VulnerabilityDisclosure
+    url: security/bloomberg-data-sets-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/bloomberg-data-sets-domain-security.yml
   - type: Portal
     url: https://www.bloomberg.com/professional/
   - type: Support
