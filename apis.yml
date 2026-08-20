@@ -19,6 +19,11 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bloomberg-data-sets.png
 tags:
   - Analytics
+  - Datasets
+  - Financial-Services
+  - Market Data
+tags_raw:
+  - Analytics
   - Data Sets
   - Financial Services
   - Market Data
