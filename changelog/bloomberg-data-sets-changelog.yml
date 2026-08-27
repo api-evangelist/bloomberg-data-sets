@@ -1,0 +1,61 @@
+generated: '2026-08-27'
+method: searched
+source: https://bloomberg.github.io/blpapi-docs/all_versions.html
+docs: https://bloomberg.github.io/blpapi-docs/
+description: >-
+  Bloomberg publishes no dated changelog or release-notes feed for either the BLPAPI SDK
+  or the Data License / Hypermedia API. What it does publish is a version ARCHIVE: a
+  public page indexing every BLPAPI SDK release with per-version reference documentation
+  for C++, C# (.NET), Java and Python. That archive is the source below. Entries carry
+  the version and the languages documented; they do NOT carry release dates, because
+  Bloomberg does not publish them, and none are invented here.
+scheme: four-part
+current_version: 3.26.7.1
+current_docs_version: '3.26.7'
+entries_have_dates: false
+entries:
+  - version: '3.26.7'
+    date: null
+    breaking: unknown
+    highlights: >-
+      Current documented SDK release. Distributed as blpapi 3.26.7.1 wheels on
+      Bloomberg's Python index and as blpapi_cpp / blpapi_java / blpapi_dotnet 3.26.7.1
+      archives on the API Library page.
+  - version: '3.26.6'
+    date: null
+    breaking: unknown
+    highlights: >-
+      Last version for which a macOS ARM Java build is offered (blpapi_java_3.26.6.1),
+      and the version pinned by the experimental C# FFI documentation.
+  - version: '3.26.5'
+    date: null
+    breaking: unknown
+  - version: '3.26.4'
+    date: null
+    breaking: unknown
+  - version: '3.26.3'
+    date: null
+    breaking: unknown
+  - version: '3.26.2'
+    date: null
+    breaking: unknown
+  - version: '3.26.1'
+    date: null
+    breaking: unknown
+  - version: '3.25.9'
+    date: null
+    breaking: unknown
+  - version: '3.25.8'
+    date: null
+    breaking: unknown
+  - version: '3.25.7'
+    date: null
+    breaking: unknown
+versions_indexed: 27
+gap: >-
+  No changelog exists for the HTTP Data License / Hypermedia API at all. Nothing dated,
+  nothing versioned, nothing anonymously reachable. This is the single clearest
+  operational-transparency gap on Bloomberg's machine-facing surface.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

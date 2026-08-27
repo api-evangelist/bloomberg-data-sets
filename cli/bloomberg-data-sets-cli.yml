@@ -1,0 +1,38 @@
+generated: '2026-08-27'
+method: searched
+source: https://professional.bloomberg.com/support/api-library/
+description: >-
+  Bloomberg ships no general-purpose API CLI. It does publish one first-party
+  command-line utility on the API Library download page: the BLPAPI Schema Downloader,
+  which retrieves the service schema definitions a BLPAPI client codes against. It is
+  recorded here because it is the only first-party command-line surface Bloomberg
+  distributes publicly; its binaries are catalogued in
+  packages/bloomberg-data-sets-packages.yml.
+clis:
+  - name: BLPAPI Schema Downloader
+    version: '1.2'
+    official: true
+    install:
+      - platform: windows
+        method: download-archive
+        url: https://blpapi.bloomberg.com/download/releases/raw/files/schemadownloader_1.2-windows.zip
+      - platform: linux
+        method: download-archive
+        url: https://blpapi.bloomberg.com/download/releases/raw/files/schemadownloader_1.2-linux.tar.gz
+    purpose: >-
+      Download the schema definitions for BLPAPI services so a client can be built
+      against the current message and field definitions.
+    commands: []
+    commands_note: >-
+      The command and flag surface is documented inside the downloaded archive, not on
+      any public page. It was NOT read and is not reconstructed here - an empty
+      commands[] is the honest state.
+absent:
+  - name: Data License / HAPI CLI
+    note: >-
+      No first-party CLI for the HTTP Data License API was found. Bloomberg's own
+      documented non-SDK access paths for Data License are the REST API, SFTP, and cloud
+      delivery.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

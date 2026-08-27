@@ -4,10 +4,12 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Bloomberg Data Sets
 providerId: bloomberg-data-sets
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-27'
+method: searched
+source: >-
+  https://professional.bloomberg.com/support/api-library/,
+  https://professional.bloomberg.com/products/data/data-management/data-license, and
+  live response-header inspection of https://api.bloomberg.com/eap/ on 2026-08-27.
 tags:
   - Analytics
   - Data Sets
@@ -15,82 +17,41 @@ tags:
   - Market Data
   - Rate Limiting
   - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Bloomberg Data Sets API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: >-
+  Bloomberg publishes NO rate limits for any of its data APIs, and its API responses
+  carry no rate-limit signalling. Consumption is governed by contractual data
+  entitlements and per-security or per-dataset licensing rather than by request-rate
+  quotas an agent can read at runtime.
+  SUPERSEDES a 2026-05-04 bulk-sweep scaffold that asserted 10 / 100 / 1,000
+  requests-per-minute tiers and X-RateLimit-* response headers. None of that was
+  harvested from Bloomberg and none of it is served by Bloomberg; it has been removed
+  rather than left to be read as published limits.
+limit_count: 0
+limits: []
+headers: {}
+headers_note: >-
+  No RateLimit-*, X-RateLimit-* or Retry-After header appeared on any observed
+  api.bloomberg.com response. The headers actually returned are X-Request-ID,
+  X-Content-Type-Options, X-Frame-Options, Content-Security-Policy and, on /eap/*,
+  Access-Control-Allow-Origin / Access-Control-Allow-Methods.
 responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Bloomberg Data API
-      - Bloomberg Data License
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Bloomberg Data API
-      - Bloomberg Data License
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Bloomberg Data API
-      - Bloomberg Data License
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Bloomberg Data API
-      - Bloomberg Data License
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Bloomberg Data API
-      - Bloomberg Data License
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  throttled: null
+  observed:
+    - status: 401
+      meaning: unauthorized_client - no JWT presented
+    - status: 403
+      meaning: access_denied - path outside the anonymous surface
+  note: No 429 was observed and none is documented.
+evidence:
+  - url: https://api.bloomberg.com/eap/catalogs/
+    status: 401
+    finding: No rate-limit headers present on the response.
+  - url: https://professional.bloomberg.com/support/api-library/
+    status: 200
+    finding: No published limits, quotas or throttling policy.
+  - url: https://professional.bloomberg.com/products/data/data-management/data-license
+    status: 200
+    finding: No published limits, quotas or throttling policy.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

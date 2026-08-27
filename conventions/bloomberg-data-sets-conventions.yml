@@ -1,0 +1,115 @@
+generated: '2026-08-27'
+method: probed
+source: >-
+  Live responses from https://api.bloomberg.com/eap/, the OIDC/OAuth metadata documents
+  at www.bloomberg.com, https://professional.bloomberg.com/support/api-library/ and
+  https://bloomberg.github.io/blpapi-docs/. No OpenAPI exists to derive from.
+description: >-
+  Cross-cutting request/response semantics for Bloomberg's two machine-facing surfaces:
+  the HTTP Data License / Hypermedia API at api.bloomberg.com/eap, and the non-HTTP
+  BLPAPI session protocol. Most rows are recorded as undocumented, because Bloomberg
+  publishes the HAPI reference only behind the Enterprise Console. Nothing is guessed.
+authentication:
+  style: bearer-jwt
+  header: Authorization
+  detail: >-
+    api.bloomberg.com/eap requires a JWT; the API states this itself in its 401 body.
+    A separate OAuth 2.0 / OIDC authorization server (authorization_code + PKCE S256)
+    is published at www.bloomberg.com/.well-known/openid-configuration.
+  cross_ref: authentication/bloomberg-data-sets-authentication.yml
+idempotency:
+  supported: unknown
+  documented: false
+  header: null
+  note: >-
+    No idempotency key header, no idempotency section, and no published write-operation
+    reference could be reached anonymously. Recorded as unknown rather than false - the
+    HAPI reference is gated, not absent. NO Idempotency pointer is emitted in apis.yml,
+    because emitting one would assert an idempotency contract this pipeline never saw.
+pagination:
+  style: hypermedia
+  documented: false
+  note: >-
+    Bloomberg describes HAPI as hypermedia-driven, with clients discovering resources
+    through link relations in responses. The concrete pagination parameters and response
+    fields are behind the gated reference and are NOT recorded here.
+field_expansion:
+  supported: unknown
+  documented: false
+metadata:
+  supported: unknown
+  documented: false
+request_tracing:
+  header: X-Request-ID
+  direction: response
+  documented: false
+  evidence: >-
+    Observed on the 401 from https://api.bloomberg.com/eap/catalogs/
+    (X-Request-ID: bf7e9262-19ba-012e-2905-73bf68f4854a). The same value is echoed as
+    errors[0].id in the JSON body, so the correlation id is available to a client that
+    only reads the body.
+versioning:
+  api:
+    scheme: unknown
+    documented: false
+    note: >-
+      No version segment appears in the reachable HAPI path space (/eap/catalogs/, not
+      /v1/...). No versioning policy page was found.
+  sdk:
+    scheme: four-part
+    current: 3.26.7.1
+    archive: https://bloomberg.github.io/blpapi-docs/all_versions.html
+    note: BLPAPI SDK releases are versioned major.minor.patch.build and 27 versions are indexed publicly.
+error_envelope:
+  format: custom
+  content_type: application/json
+  cross_ref: errors/bloomberg-data-sets-problem-types.yml
+  note: >-
+    RFC 6749 OAuth error pair plus a JSON:API-shaped errors[] array. Not RFC 9457.
+rate_limit_signaling:
+  headers: []
+  documented: false
+  note: >-
+    No RateLimit-*, X-RateLimit-* or Retry-After header appeared on any observed
+    api.bloomberg.com response, and no published limits were found.
+    Cross-ref rate-limits/bloomberg-data-sets-rate-limits.yml.
+transport_security:
+  observed_response_headers:
+    - "X-Content-Type-Options: nosniff"
+    - "X-Frame-Options: DENY"
+    - "Content-Security-Policy: default-src 'self'; object-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'"
+  cors:
+    allow_origin: https://console.bloomberg.com
+    allow_methods: GET
+    note: >-
+      Observed on the /eap/catalogs/ 401. The API is CORS-scoped to Bloomberg's own
+      Enterprise Console; it is not a browser-callable third-party surface.
+reversibility:
+  grade: na
+  applicable: false
+  detail: >-
+    No write surface is reachable or documented anonymously. The two anonymously
+    observable behaviours on api.bloomberg.com/eap are GET requests, and the API
+    advertises Access-Control-Allow-Methods: GET. Bloomberg's Data License model is
+    request-and-retrieve over datasets, and the BLPAPI reference/historical/subscription
+    services are read paths. No reversal operation (cancel, refund, void, undo, restore)
+    was found, and no window is asserted - asserting one would be an invented claim.
+    If the gated HAPI reference documents a cancellable request resource, this grades up
+    on a future pass with the docs URL as evidence.
+  reversal_operations: []
+  cross_ref: null
+dry_run_mode:
+  supported: unknown
+  documented: false
+  note: No sandbox, test mode, or dry-run parameter is published on any anonymously reachable page.
+non_http_surface:
+  name: BLPAPI
+  note: >-
+    The Bloomberg Open API is an event-driven session protocol, not REST. Clients open a
+    session, request a service (//blp/refdata, //blp/mktdata and similar), and consume
+    Event/Message objects. Request-response and subscription paradigms coexist. None of
+    the HTTP conventions above apply to it.
+  reference: https://bloomberg.github.io/blpapi-docs/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

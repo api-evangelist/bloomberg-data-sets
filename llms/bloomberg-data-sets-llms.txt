@@ -1,0 +1,62 @@
+# Bloomberg Data Sets
+
+> Bloomberg L.P. provides financial market data, reference data, analytics and news to
+> financial professionals. This file describes the machine-facing surface of Bloomberg's
+> data products as an independent third-party profile maintained by API Evangelist. It
+> is generated from the API Evangelist catalog entry and the artifacts in this
+> repository; Bloomberg does not publish an llms.txt.
+
+Bloomberg publishes no OpenAPI, AsyncAPI, GraphQL schema, gRPC/Protobuf definition, WSDL
+or MCP server on any anonymously reachable host. Its two machine-facing surfaces are the
+BLPAPI session protocol (a native SDK, not HTTP) and the Data License Hypermedia API
+(HTTP, JWT-gated, reference documentation behind the Enterprise Console). Every link
+below was fetched and its HTTP status recorded on 2026-08-27.
+
+## APIs
+
+- [Bloomberg Data API (BLPAPI)](https://professional.bloomberg.com/support/api-library/): Real-time market data, reference data, historical data and intraday tick data over the Bloomberg Open API session protocol. SDKs in C++, Java, C# (.NET) and Python. Not an HTTP API; there is no base URL.
+- [Bloomberg Data License (Hypermedia API)](https://api.bloomberg.com/eap): Hypermedia-driven REST access to Data License content. Requires a JWT; an anonymous request returns HTTP 401 unauthorized_client.
+
+## Docs
+
+- [BLPAPI Reference Documentation](https://bloomberg.github.io/blpapi-docs/): Per-version SDK reference for C++, C# (.NET), Java and Python. Current 3.26.7.
+- [BLPAPI Core Developer Guide (PDF)](https://data.bloomberglp.com/professional/sites/10/2017/03/BLPAPI-Core-Developer-Guide.pdf)
+- [BLPAPI Core User Guide (PDF)](https://data.bloomberglp.com/professional/sites/10/2017/03/BLPAPI-Core-User-Guide.pdf)
+- [API Library (downloads + install commands)](https://professional.bloomberg.com/support/api-library/)
+- [Bloomberg Professional Support Documentation](https://professional.bloomberg.com/support/documentation/)
+- [SFTP Connectivity Policy (Enterprise Console)](https://console.bloomberg.com/about/47)
+
+## SDKs
+
+- Python: `python -m pip install --index-url=https://blpapi.bloomberg.com/repository/releases/python/simple/ blpapi` — blpapi 3.26.7.1, from Bloomberg's own PEP 503 index. Not on PyPI.
+- C++ / Java / C# (.NET): versioned archives at https://blpapi.bloomberg.com/download/releases/raw/files/ — 3.26.7.1. Not on Maven Central or nuget.org.
+- C# FFI: `dotnet add package Bloomberg.Blpapi --prerelease` from Bloomberg's own NuGet v3 feed.
+- Node.js: [blpapi on npm](https://www.npmjs.com/package/blpapi) — 1.2.0, published 2015-03-19, repository archived. Abandoned.
+
+## Discovery documents
+
+- [security.txt](https://www.bloomberg.com/.well-known/security.txt): RFC 9116, expires 2027-07-01.
+- [OpenID Connect discovery](https://www.bloomberg.com/.well-known/openid-configuration): issuer https://www.bloomberg.com, authorization_code + PKCE S256, scopes openid / user / entitlements.
+- [OAuth authorization server metadata](https://www.bloomberg.com/.well-known/oauth-authorization-server): RFC 8414.
+
+## Not published
+
+- No OpenAPI, Swagger, AsyncAPI, GraphQL SDL, .proto or WSDL on any Bloomberg host.
+- No A2A agent card: /.well-known/agent-card.json and /.well-known/agent.json both return 404 on www.bloomberg.com and console.bloomberg.com.
+- No Model Context Protocol server. Bloomberg MCP servers in the wild are third-party wrappers around a locally licensed Terminal.
+- No public pricing page, no published rate limits, no status page, no changelog, no sandbox.
+
+## Artifacts in this profile
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/apis.yml)
+- [Packages / SDKs](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/packages/bloomberg-data-sets-packages.yml)
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/authentication/bloomberg-data-sets-authentication.yml)
+- [OAuth scopes](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/scopes/bloomberg-data-sets-scopes.yml)
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/conventions/bloomberg-data-sets-conventions.yml)
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/errors/bloomberg-data-sets-problem-types.yml)
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/conformance/bloomberg-data-sets-conformance.yml)
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/lifecycle/bloomberg-data-sets-lifecycle.yml)
+- [Changelog](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/changelog/bloomberg-data-sets-changelog.yml)
+- [Well-known index](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/well-known/bloomberg-data-sets-well-known.yml)
+- [Domain security](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/security/bloomberg-data-sets-domain-security.yml)
+- [Vulnerability disclosure](https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/security/bloomberg-data-sets-vulnerability-disclosure.yml)

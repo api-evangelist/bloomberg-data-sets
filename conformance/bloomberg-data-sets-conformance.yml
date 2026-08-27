@@ -1,0 +1,124 @@
+generated: '2026-08-27'
+method: probed
+source: >-
+  https://www.bloomberg.com/.well-known/openid-configuration,
+  https://www.bloomberg.com/.well-known/oauth-authorization-server,
+  https://www.bloomberg.com/.well-known/security.txt, and the live error envelopes from
+  https://api.bloomberg.com/eap/. Bloomberg publishes no OpenAPI, so no standard below
+  is asserted from a spec - each row cites a document that was actually fetched, or is
+  marked unverifiable.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      RFC 6749 authorization_code + refresh_token grants declared in the OAuth
+      authorization-server metadata document; the API's own 4xx bodies use the RFC 6749
+      section 5.2 error/error_description pair.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: >-
+      A conforming metadata document is served at
+      https://www.bloomberg.com/.well-known/oauth-authorization-server (issuer,
+      authorization_endpoint, token_endpoint, jwks_uri, response_types_supported,
+      code_challenge_methods_supported).
+  - id: oidc-discovery
+    conforms: true
+    evidence: >-
+      https://www.bloomberg.com/.well-known/openid-configuration declares issuer,
+      subject_types_supported=[public], id_token_signing_alg_values_supported=[RS256]
+      and scopes_supported=[openid,user,entitlements]; jwks_uri resolves to a live RSA
+      JWKS at login.bloomberg.com.
+  - id: rfc7636-pkce
+    conforms: true
+    evidence: code_challenge_methods_supported = ["S256"] in both metadata documents.
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: >-
+      https://www.bloomberg.com/.well-known/security.txt carries Contact, Canonical,
+      Policy, Preferred-Languages and a non-expired Expires (2027-07-01T00:00:00Z).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Error responses are application/json, never application/problem+json, and carry no
+      type/title/status/detail/instance problem object. See
+      errors/bloomberg-data-sets-problem-types.yml.
+  - id: json-api
+    conforms: partial
+    evidence: >-
+      The errors[] members use JSON:API error-object member names (id, title, detail,
+      status, meta), but the responses declare application/json rather than
+      application/vnd.api+json and no JSON:API document structure (data/included/links)
+      was observed. Shape resemblance only; no JSON:API conformance is claimed.
+  - id: rest-hypermedia
+    conforms: true
+    evidence: >-
+      Bloomberg describes the Hypermedia API (HAPI) as hypermedia-driven with clients
+      discovering resources through link relations in responses; the reachable path space
+      (/eap/catalogs/) is consistent with that. The link-relation vocabulary itself is
+      behind the gated reference and was not read.
+  - id: cors
+    conforms: true
+    evidence: >-
+      Access-Control-Allow-Origin: https://console.bloomberg.com and
+      Access-Control-Allow-Methods: GET on the /eap/catalogs/ response - deliberately
+      scoped to Bloomberg's own console, not open.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI or Swagger document was found on any Bloomberg host. See the
+      contract-discovery record in x-coverage.
+  - id: asyncapi
+    conforms: false
+    evidence: >-
+      BLPAPI has a genuine subscription/streaming surface but Bloomberg publishes no
+      AsyncAPI document for it.
+domain_standards:
+  regime: securities_market_data
+  note: >-
+    REWARD-ONLY. Bloomberg's market has real domain standards and Bloomberg is a
+    participant in several, but participation is not the check - the check is the
+    CONTRACT declaring the standard. Bloomberg publishes no machine-readable contract on
+    any anonymously reachable host, so no domain standard can be evidenced from one, and
+    none is claimed. Every row below is unverifiable rather than absent.
+  standards:
+    - id: fix-protocol
+      conforms: null
+      evidence: >-
+        Unverifiable. Bloomberg operates FIX-based order and execution services (EMSX,
+        FIX connectivity) and publishes a FIX TLS Certificate Manager PDF at
+        https://data.bloomberglp.com/professional/sites/10/FIX1.pdf, but no contract in
+        this profile's reachable surface declares a FIX message type or session profile.
+    - id: iso-20022
+      conforms: null
+      evidence: Unverifiable. No ISO 20022 message type appears in any reachable Bloomberg contract.
+    - id: mifid-ii
+      conforms: null
+      evidence: >-
+        Unverifiable. Bloomberg markets regulatory-reporting data through Data License,
+        but no reachable contract declares a MiFID II reporting shape.
+    - id: figi
+      conforms: null
+      evidence: >-
+        Unverifiable HERE. The Financial Instrument Global Identifier is an Object
+        Management Group standard originated by Bloomberg, and Bloomberg operates the
+        OpenFIGI API on a separate domain (openfigi.com) that is profiled outside this
+        repository. Nothing in the bloomberg-data-sets reachable surface declares a FIGI
+        identifier scheme, so no credit is claimed on this profile.
+compliance_program:
+  published: false
+  checked: '2026-08-27'
+  probes:
+    - url: https://professional.bloomberg.com/security/
+      status: 404
+    - url: https://professional.bloomberg.com/compliance/
+      status: 404
+    - url: https://www.bloomberg.com/company/security/
+      status: 403
+  note: >-
+    No public trust center and no named certification (SOC 2, ISO 27001, PCI DSS, HIPAA,
+    FedRAMP) was found on any anonymously reachable Bloomberg page.
+    0-working/probe-security-programs.py returned trust=none. NO Compliance pointer is
+    emitted.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

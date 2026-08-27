@@ -1,0 +1,54 @@
+generated: '2026-08-27'
+method: probed
+source: >-
+  Live unauthenticated requests to https://api.bloomberg.com/ and
+  https://api.bloomberg.com/eap/catalogs/ on 2026-08-27. Bloomberg publishes no OpenAPI
+  and no public error reference, so nothing here is derived from a spec - every field
+  below was read off a response this pipeline actually received.
+format: custom
+format_note: >-
+  NOT RFC 9457. The Data License API returns Content-Type: application/json (never
+  application/problem+json) carrying a hybrid envelope: the RFC 6749 section 5.2 OAuth
+  pair (error, error_description) at the top level, alongside an errors[] array whose
+  member objects use JSON:API error-object member names (id, title, detail, status,
+  meta) plus a Bloomberg-specific errorCode. Field ORDER varies between responses, so
+  clients must parse by key.
+envelope:
+  content_type: application/json
+  top_level:
+    error: OAuth 2.0 error identifier, e.g. unauthorized_client, access_denied
+    error_description: human-readable message
+    errors: array of error objects
+  error_object:
+    id: request correlation id, matches the X-Request-ID response header when present
+    title: repeats the top-level error identifier
+    detail: repeats error_description
+    status: numeric HTTP status
+    errorCode: Bloomberg error slug, e.g. unauthorized-client, forbidden
+    meta.server-time: unix epoch seconds
+  correlation_header: X-Request-ID
+problems:
+  - status: 401
+    error: unauthorized_client
+    errorCode: unauthorized-client
+    title: unauthorized_client
+    detail: No definition of jwt found in header or query string.
+    observed_at: https://api.bloomberg.com/eap/catalogs/
+    remediation: >-
+      Present a Data License JWT. See authentication/bloomberg-data-sets-authentication.yml.
+  - status: 403
+    error: access_denied
+    errorCode: forbidden
+    title: unauthorized_client
+    detail: Access forbidden.
+    observed_at: https://api.bloomberg.com/
+    remediation: >-
+      Path is outside the entitled API surface for an anonymous caller. Only /eap/* returns
+      an authentication challenge; every other path on the host is refused outright.
+coverage_gap: >-
+  Only the two anonymous-reachable failure modes are recorded. The 4xx/5xx catalogue for
+  authenticated Data License operations is not published anonymously and was NOT
+  inferred. Empty is the honest state of the rest of this catalogue.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

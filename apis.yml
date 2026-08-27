@@ -1,83 +1,158 @@
 aid: bloomberg-data-sets
 name: Bloomberg Data Sets
-description: >-
-  Bloomberg provides comprehensive financial data, analytics, and news services
-  through various APIs and data feeds, serving financial professionals worldwide.
+description: Bloomberg L.P. delivers financial market data, reference data, pricing, regulatory and alternative
+  data to financial professionals through two machine-facing surfaces. The Bloomberg Open API (BLPAPI) is a native
+  session protocol with first-party SDKs in C++, Java, C# (.NET) and Python, covering real-time market data, reference
+  data, historical data and intraday tick data across the Desktop API, Server API and B-PIPE products. Bloomberg
+  Data License adds bulk and per-security delivery of the same content catalogue over a JWT-authenticated hypermedia
+  REST API at api.bloomberg.com/eap, over SFTP, and natively in the major cloud providers. Bloomberg publishes no
+  OpenAPI, AsyncAPI, GraphQL schema or MCP server; its API reference for the REST surface sits behind the Bloomberg
+  Enterprise Console, while the BLPAPI SDK reference, downloads and version archive are fully public.
 type: Index
 accessModel:
-  pricing: freemium
-  onboarding: unknown
+  pricing: contract
+  onboarding: sales-led
   trial: false
   try_now: false
   public: false
-  label: Freemium
-  confidence: medium
+  label: Contract
+  confidence: high
   source:
   - plans
-  generated: '2026-07-22'
-  method: derived
+  - https://professional.bloomberg.com/products/data/data-management/data-license
+  generated: '2026-08-27'
+  method: searched
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bloomberg-data-sets.png
 tags:
-  - Analytics
-  - Datasets
-  - Financial-Services
-  - Market Data
+- Analytics
+- Datasets
+- Financial-Services
+- Market Data
+- Reference Data
+- Historical Data
+- Financial Data
+- Data Licensing
 tags_raw:
-  - Analytics
-  - Data Sets
-  - Financial Services
-  - Market Data
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/apis.yml
+- Analytics
+- Data Sets
+- Financial Services
+- Market Data
+- Reference Data
+- Historical Data
+- Financial Data
+- Data Licensing
+url: https://raw.githubusercontent.com/api-evangelist/bloomberg-data-sets/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-03-16'
+modified: '2026-08-27'
 specificationVersion: '0.23'
 apis:
-  - aid: bloomberg-data-sets:bloomberg-data-api
-    name: Bloomberg Data API
-    description: >-
-      Provides programmatic access to Bloomberg's extensive financial data
-      including market data, reference data, historical data, and real-time
-      information.
-    humanURL: https://www.bloomberg.com/professional/support/api-library/
-    tags:
-      - Financial Data
-      - Historical Data
-      - Market Data
-      - Real-Time
-      - Reference Data
-    properties:
-      - type: Documentation
-        url: https://www.bloomberg.com/professional/support/api-library/
-  - aid: bloomberg-data-sets:bloomberg-data-license
-    name: Bloomberg Data License
-    description: >-
-      Subscription-based service providing bulk downloads of historical and
-      reference data for quantitative analysis and research.
-    humanURL: https://www.bloomberg.com/professional/products/data/data-management/data-license/
-    tags:
-      - Bulk Data
-      - Data Feeds
-      - Historical Data
-      - Quantitative Research
-    properties:
-      - type: Documentation
-        url: https://www.bloomberg.com/professional/products/data/data-management/data-license/
+- aid: bloomberg-data-sets:bloomberg-data-api
+  name: Bloomberg Data API
+  description: 'The Bloomberg Open API (BLPAPI) provides programmatic access to Bloomberg''s market data, reference
+    data, historical data and intraday tick data. It is an event-driven session protocol rather than an HTTP API:
+    clients open a session, request a service such as //blp/refdata or //blp/mktdata, and consume events and messages.
+    First-party SDKs are published for C++, Java, C# (.NET) and Python and cover the Desktop API, Server API and
+    B-PIPE products.'
+  humanURL: https://professional.bloomberg.com/support/api-library/
+  tags:
+  - Financial Data
+  - Historical Data
+  - Market Data
+  - Real-Time
+  - Reference Data
+  properties:
+  - type: Documentation
+    url: https://professional.bloomberg.com/support/api-library/
+  - type: APIReference
+    url: https://bloomberg.github.io/blpapi-docs/
+- aid: bloomberg-data-sets:bloomberg-data-license
+  name: Bloomberg Data License
+  description: Bloomberg Data License provides bulk and per-security delivery of Bloomberg's reference, pricing,
+    regulatory and alternative data for quantitative analysis, research and enterprise data management. Delivery
+    is available over a hypermedia-driven REST API (the Hypermedia API, HAPI) at api.bloomberg.com/eap, over SFTP,
+    and natively in the major cloud providers. The REST surface requires a JWT; an unauthenticated request returns
+    HTTP 401 unauthorized_client.
+  humanURL: https://professional.bloomberg.com/products/data/data-management/data-license
+  baseURL: https://api.bloomberg.com/eap
+  tags:
+  - Bulk Data
+  - Data Feeds
+  - Historical Data
+  - Quantitative Research
+  properties:
+  - type: Documentation
+    url: https://professional.bloomberg.com/products/data/data-management/data-license
 common:
-  - type: VulnerabilityDisclosure
-    url: security/bloomberg-data-sets-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/bloomberg-data-sets-domain-security.yml
-  - type: Portal
-    url: https://www.bloomberg.com/professional/
-  - type: Support
-    url: https://www.bloomberg.com/professional/support/
-  - type: GettingStarted
-    url: https://www.bloomberg.com/professional/support/api-library/
-  - type: TermsOfService
-    url: https://www.bloomberg.com/notices/tos/
-  - type: PrivacyPolicy
-    url: https://www.bloomberg.com/notices/privacy/
+- type: ParentCompany
+  url: https://apis.io/providers/bloomberg/
+  name: Bloomberg
+  x-relationship: product
+  x-generated-by: bloomberg-family:2026-08-27
+- type: DeveloperPortal
+  url: https://professional.bloomberg.com/support/api-library/
+- type: Documentation
+  url: https://professional.bloomberg.com/support/documentation/
+- type: APIReference
+  url: https://bloomberg.github.io/blpapi-docs/
+- type: GettingStarted
+  url: https://professional.bloomberg.com/support/api-library/
+- type: Support
+  url: https://professional.bloomberg.com/support/
+- type: GitHubOrganization
+  url: https://github.com/bloomberg
+- type: Blog
+  url: https://www.techatbloomberg.com/
+- type: TermsOfService
+  url: https://www.bloomberg.com/notices/tos/
+- type: PrivacyPolicy
+  url: https://www.bloomberg.com/notices/privacy/
+- type: Packages
+  url: packages/bloomberg-data-sets-packages.yml
+- type: SDKs
+  url: packages/bloomberg-data-sets-packages.yml
+- type: CLI
+  url: cli/bloomberg-data-sets-cli.yml
+- type: Authentication
+  url: authentication/bloomberg-data-sets-authentication.yml
+- type: OAuthScopes
+  url: scopes/bloomberg-data-sets-scopes.yml
+- type: Conventions
+  url: conventions/bloomberg-data-sets-conventions.yml
+- type: ErrorCatalog
+  url: errors/bloomberg-data-sets-problem-types.yml
+- type: Conformance
+  url: conformance/bloomberg-data-sets-conformance.yml
+- type: Lifecycle
+  url: lifecycle/bloomberg-data-sets-lifecycle.yml
+- type: Deprecation
+  url: https://assets.bbhub.io/professional/sites/27/Software-Update-and-Expiration-21en.pdf
+- type: ChangeLog
+  url: changelog/bloomberg-data-sets-changelog.yml
+- type: WellKnown
+  url: well-known/bloomberg-data-sets-well-known.yml
+- type: SecurityTxt
+  url: well-known/bloomberg-data-sets-security.txt
+- type: Security
+  url: https://www.bloomberg.com/.well-known/security.txt
+- type: VulnerabilityDisclosure
+  url: security/bloomberg-data-sets-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/bloomberg-data-sets-domain-security.yml
+- type: LLMsTxt
+  url: llms/bloomberg-data-sets-llms.txt
+- type: Plans
+  url: plans/bloomberg-data-sets-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/bloomberg-data-sets-rate-limits.yml
+- type: FinOps
+  url: finops/bloomberg-data-sets-finops.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-27'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1
+x-parent: bloomberg
+x-relationship: product

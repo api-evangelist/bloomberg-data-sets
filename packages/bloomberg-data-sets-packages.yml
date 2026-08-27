@@ -1,0 +1,148 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  https://professional.bloomberg.com/support/api-library/ (the published download
+  table), https://blpapi.bloomberg.com/repository/releases/python/simple/blpapi/
+  (Bloomberg's own PEP 503 index), https://bloomberg.github.io/blpapi-docs/, and the
+  npm registry metadata for the blpapi package.
+description: >-
+  Bloomberg ships the BLPAPI SDK as first-party client libraries in C++, Java, C#/.NET
+  and Python. None of them are published to the mainstream public registries: there is
+  no blpapi on PyPI, no blpapi on RubyGems, no Bloomberglp.Blpapi on nuget.org and no
+  blpapi artifact on Maven Central. Bloomberg operates its own PEP 503 Python index and
+  its own NuGet v3 feed, and distributes the C++/Java/.NET builds as versioned zip and
+  tarball downloads. The one package that IS on a public registry - npm blpapi - is a
+  2015 release from an archived repository.
+registry_note: >-
+  All version numbers below were read from a machine-readable source: the Bloomberg PEP
+  503 index for the Python wheel, the pinned filenames in the published download URLs
+  for the C++/Java/.NET/schemadownloader artifacts, and registry.npmjs.org for the npm
+  package. Bloomberg's index publishes no upload dates, so `published:` is null with a
+  note for those entries rather than guessed.
+packages:
+  - language: python
+    registry: bloomberg-pep503
+    name: blpapi
+    url: https://blpapi.bloomberg.com/repository/releases/python/simple/blpapi/
+    install: python -m pip install --index-url=https://blpapi.bloomberg.com/repository/releases/python/simple/ blpapi
+    official: true
+    version: 3.26.7.1
+    published: null
+    note: >-
+      Latest wheel on Bloomberg's own PEP 503 index (540 wheel files, 27 SDK versions
+      from 3.25.x through 3.26.7.x). The index emits no upload dates, so `published` is
+      null - checked, nothing to record. Wheels are provided for Windows (32/64-bit),
+      macOS ARM and most Linux distributions. NOT on PyPI: pypi.org/pypi/blpapi/json
+      returns 404.
+  - language: cpp
+    registry: cdn
+    name: blpapi_cpp
+    url: https://blpapi.bloomberg.com/download/releases/raw/files/blpapi_cpp_3.26.7.1-linux.tar.gz
+    install: download and unpack the platform tarball/zip from the API Library page
+    official: true
+    version: 3.26.7.1
+    published: null
+    note: >-
+      Version read from the pinned filename in the published download URL. Windows zip
+      and macOS ARM (experimental) builds carry the same 3.26.7.1 pin. No registry
+      metadata endpoint exists for this distribution.
+  - language: java
+    registry: cdn
+    name: blpapi_java
+    url: https://blpapi.bloomberg.com/download/releases/raw/files/blpapi_java_3.26.7.1.zip
+    install: download and unpack the platform zip/tarball from the API Library page
+    official: true
+    version: 3.26.7.1
+    published: null
+    note: >-
+      Version read from the pinned filename. The macOS ARM Java build lags at 3.26.6.1
+      and is labelled experimental. Not published to Maven Central - a solrsearch query
+      for blpapi returns no Bloomberg-owned coordinates.
+  - language: csharp
+    registry: cdn
+    name: blpapi_dotnet
+    url: https://blpapi.bloomberg.com/download/releases/raw/files/blpapi_dotnet_3.26.7.1.zip
+    install: download and unpack the Windows zip from the API Library page
+    official: true
+    version: 3.26.7.1
+    published: null
+    note: Version read from the pinned filename in the published download URL.
+  - language: csharp
+    registry: nuget-private
+    name: Bloomberg.Blpapi
+    url: https://nuget.blpapi.bloomberg.com/releases/v3/index.json
+    install: >-
+      dotnet nuget add source --name bloomberg-blpapi-release --username token --password
+      download --store-password-in-clear-text
+      https://token:download@nuget.blpapi.bloomberg.com/releases/v3/index.json &&
+      dotnet add package Bloomberg.Blpapi --prerelease
+    official: true
+    version: null
+    published: null
+    note: >-
+      The C# FFI API, distributed from Bloomberg's own NuGet v3 feed rather than
+      nuget.org (api.nuget.org returns 404 for bloomberglp.blpapi and an
+      azuresearch-usnc query for blpapi returns nothing). The feed requires the
+      token/download credential pair Bloomberg publishes on the API Library page, so the
+      version was not read - `null` here means checked and not readable anonymously, not
+      absent. Bloomberg labels the release experimental and the documented install uses
+      --prerelease.
+  - language: python
+    registry: cdn
+    name: schemadownloader
+    url: https://blpapi.bloomberg.com/download/releases/raw/files/schemadownloader_1.2-linux.tar.gz
+    install: download and unpack the platform archive from the API Library page
+    official: true
+    version: '1.2'
+    published: null
+    note: >-
+      First-party command-line utility for downloading BLPAPI service schemas. Version
+      read from the pinned filename. See cli/bloomberg-data-sets-cli.yml.
+  - language: javascript
+    registry: npm
+    name: blpapi
+    url: https://www.npmjs.com/package/blpapi
+    install: npm install blpapi
+    official: true
+    version: 1.2.0
+    published: '2015-03-19'
+    note: >-
+      Bloomberg Open API binding for Node.js, MIT-licensed, repository
+      github.com/bloomberg/blpapi-node. First-party (the npm repository field points at
+      the Bloomberg GitHub org) but ABANDONED: the last publish is 2015-03-19, the
+      backing repository was last pushed 2017-10-05 and is now archived, and the SDK it
+      wraps has since advanced from 3.8-era to 3.26.7.1. It still draws 356 downloads a
+      month. Decay evidence, not a supported client.
+unpublished_surfaces:
+  - registry: pypi
+    checked: '2026-08-27'
+    result: 404 - no blpapi package
+  - registry: maven-central
+    checked: '2026-08-27'
+    result: no Bloomberg-owned blpapi coordinates
+  - registry: nuget.org
+    checked: '2026-08-27'
+    result: 404 for bloomberglp.blpapi; no results for a blpapi query
+  - registry: rubygems
+    checked: '2026-08-27'
+    result: "This rubygem could not be found."
+  - registry: crates.io
+    checked: '2026-08-27'
+    result: >-
+      a crate named "bloomberg" exists (0.2.0, 2024-05-11) but is third-party, not
+      published by Bloomberg L.P.
+archived_first_party_repos:
+  - repo: https://github.com/bloomberg/blpapi-node
+    archived: true
+    last_push: '2017-10-05'
+  - repo: https://github.com/bloomberg/blpapi-http
+    archived: true
+    last_push: '2016-01-25'
+    note: HTTP/WebSocket wrapper for the Bloomberg Open API. Apache-2.0.
+  - repo: https://github.com/bloomberg/blpapi-hs
+    archived: true
+    last_push: '2015-09-08'
+    note: Haskell interface to BLPAPI. MIT.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

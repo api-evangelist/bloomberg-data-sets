@@ -1,0 +1,49 @@
+generated: '2026-08-27'
+method: probed
+source: https://www.bloomberg.com/.well-known/openid-configuration
+docs: null
+description: >-
+  Bloomberg publishes no OpenAPI and no public scopes reference page. The three scopes
+  below are the complete scopes_supported array from the OIDC discovery document
+  Bloomberg serves at www.bloomberg.com (identical to the one at login.bloomberg.com).
+  Descriptions are NOT published by Bloomberg and are not invented here - each is marked
+  undocumented.
+schemes:
+  - name: BloombergOIDC
+    source: well-known/bloomberg-data-sets-openid-configuration.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://login.bloomberg.com/api/oauth/authorize
+        tokenUrl: https://login.bloomberg.com/api/oauth/token
+        code_challenge_methods: [S256]
+scopes:
+  - scope: openid
+    description: null
+    documented: false
+    note: Standard OIDC scope requesting an ID token. Bloomberg publishes no description.
+    flows: [authorizationCode]
+    sources: [well-known/bloomberg-data-sets-openid-configuration.json]
+  - scope: user
+    description: null
+    documented: false
+    note: Bloomberg publishes no description for this scope.
+    flows: [authorizationCode]
+    sources: [well-known/bloomberg-data-sets-openid-configuration.json]
+  - scope: entitlements
+    description: null
+    documented: false
+    note: >-
+      Bloomberg publishes no description for this scope. Named consistently with
+      Bloomberg's data-entitlement model, but no published definition was found and none
+      is asserted.
+    flows: [authorizationCode]
+    sources: [well-known/bloomberg-data-sets-openid-configuration.json]
+scope_count: 3
+gap: >-
+  The Data License / HAPI JWT surface at api.bloomberg.com/eap is a separate
+  authorization domain from this OIDC issuer and its scope or entitlement vocabulary is
+  not published anonymously. Reading it requires provisioned Enterprise Console
+  credentials.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

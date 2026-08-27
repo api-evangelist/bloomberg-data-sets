@@ -1,0 +1,93 @@
+generated: '2026-08-27'
+method: searched
+source: live unauthenticated probes of every Bloomberg host named in apis.yml, the BLPAPI download host, and the Data License API host
+description: >-
+  Well-known discovery surface for Bloomberg. www.bloomberg.com serves three real
+  documents: an RFC 9116 security.txt, an OIDC discovery document, and an RFC 8414
+  OAuth authorization-server metadata document. login.bloomberg.com serves the same
+  OIDC discovery document plus a live JWKS. The Data License API host
+  (api.bloomberg.com) rejects every unauthenticated request with a 403 JSON envelope,
+  including /.well-known/ paths. developer.bloomberg.com and data.bloomberg.com are
+  single-page applications that answer 200 with the same HTML shell for every path -
+  those 200s are NOT documents and are recorded as soft-404 controls.
+hosts:
+  - host: https://www.bloomberg.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: bloomberg-data-sets-security.txt
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: bloomberg-data-sets-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: bloomberg-data-sets-oauth-authorization-server.json
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://login.bloomberg.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        note: >-
+          Byte-identical to the document served at www.bloomberg.com; issuer is
+          https://www.bloomberg.com. Not saved twice.
+      - path: /api/oauth/.well-known/jwks.json
+        status: 200
+        note: Live RSA JWKS referenced by jwks_uri in the discovery document. Not saved (rotating key material).
+  - host: https://api.bloomberg.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+    note: >-
+      Every path on this host returns the same 247-byte JSON access_denied envelope
+      to an unauthenticated client. /eap/ and /eap/catalogs/ instead return 401
+      unauthorized_client ("No definition of jwt found in header or query string"),
+      which is how the live API surface was located.
+  - host: https://developer.bloomberg.com
+    documents: []
+    hit_count: 0
+    soft_404_control:
+      path: /zzz-does-not-exist-12345
+      status: 200
+      bytes: 18505
+      note: >-
+        Every probed path - /openapi.json, /swagger.json, /llms.txt and all seven
+        /.well-known/* paths - returns the identical 18,505-byte SPA shell. No document
+        is served here; no WellKnown credit is claimed for this host.
+  - host: https://data.bloomberg.com
+    documents: []
+    hit_count: 0
+    soft_404_control:
+      path: /llms.txt
+      status: 200
+      bytes: 2363
+      note: Enterprise Access Point SPA; identical 2,363-byte shell for every path including /openapi.json.
+  - host: https://professional.bloomberg.com
+    documents: []
+    hit_count: 0
+    note: /.well-known/security.txt, /.well-known/agent-card.json and /llms.txt all return HTTP 404.
+  - host: https://console.bloomberg.com
+    documents: []
+    hit_count: 0
+    note: >-
+      /.well-known/* returns a genuine nginx 404; unknown non-well-known paths return the
+      Enterprise Console SPA shell (200, 1,059 bytes).
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

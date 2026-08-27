@@ -1,0 +1,71 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  https://professional.bloomberg.com/support/api-library/,
+  https://bloomberg.github.io/blpapi-docs/, https://bloomberg.github.io/blpapi-docs/all_versions.html,
+  https://professional.bloomberg.com/support/documentation/
+description: >-
+  Bloomberg publishes a real, dated lifecycle surface for the BLPAPI SDK - a public
+  version archive spanning 27 releases and a formal Software Update and Expiration
+  Policy - but publishes no versioning policy, no deprecation policy and no status page
+  for the HTTP Data License / Hypermedia API.
+versioning:
+  sdk:
+    scheme: four-part
+    current: 3.26.7.1
+    docs_current: 3.26.7
+    archive: https://bloomberg.github.io/blpapi-docs/all_versions.html
+    versions_indexed: 27
+    range: 3.25.3 through 3.26.7
+    note: >-
+      Reference documentation is published per version for C++, C# (.NET), Java and
+      Python. Older SDK release docs remain online at the archive URL.
+  api:
+    scheme: null
+    current: null
+    docs: null
+    note: >-
+      The reachable HAPI path space carries no version segment (/eap/catalogs/, not
+      /v1/...), and no versioning policy page was found on any Bloomberg host.
+deprecation:
+  policy_url: https://assets.bbhub.io/professional/sites/27/Software-Update-and-Expiration-21en.pdf
+  policy_name: Bloomberg Software Update and Expiration Policy
+  sunset_header: false
+  note: >-
+    Bloomberg publishes a formal software update and expiration policy governing when
+    installed Bloomberg software - including the API libraries - stops being supported
+    and expires. It is a PDF, not a machine-readable policy, and it covers the installed
+    software estate rather than HTTP endpoint deprecation. No RFC 8594 Sunset or
+    Deprecation header was observed on any api.bloomberg.com response, and no
+    endpoint-level deprecation notice was found. Supporting document: Software
+    Compatibility Matrix,
+    https://assets.bbhub.io/professional/sites/27/software_matrix_290en.pdf
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No public SLA was found. Data License and B-PIPE service levels are contractual and
+    are not published anonymously.
+status_page:
+  url: null
+  checked: '2026-08-27'
+  probes:
+    - url: https://status.bloomberg.com/
+      status: DNS resolution failed
+  note: >-
+    status.bloomberg.com does not resolve, and no status or incident-history page was
+    linked from the API Library or Support pages. NO StatusPage pointer is emitted.
+    Terminal and Data License incident communication runs through the Enterprise Console
+    and account channels, which are not anonymously reachable.
+connectivity_policies:
+  - name: SFTP Connectivity Policy
+    url: https://console.bloomberg.com/about/47
+    note: >-
+      Public Enterprise Console page governing the SFTP delivery channel for Data
+      License, including host keys and fingerprints. The nearest thing Bloomberg
+      publishes to an operational change policy for the data-delivery surface.
+deprecated_operations: []
+deprecated_operations_note: No OpenAPI exists in this repository, so no operation-level deprecation could be derived.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

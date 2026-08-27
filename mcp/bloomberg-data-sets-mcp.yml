@@ -1,0 +1,49 @@
+generated: '2026-08-27'
+method: searched
+status: none
+source: >-
+  Searched the Bloomberg developer surface (professional.bloomberg.com/support/api-library/,
+  developer.bloomberg.com, bloomberg.github.io/blpapi-docs/), the github.com/bloomberg
+  organization, npm, and the public MCP directories on 2026-08-27.
+description: >-
+  Bloomberg publishes NO Model Context Protocol server, hosted or installable. Every MCP
+  server that exposes Bloomberg data is a third-party project that wraps the licensed
+  BLPAPI SDK against a Terminal the operator already pays for. None is authored,
+  endorsed, or distributed by Bloomberg L.P., and none is recorded as a Bloomberg agent
+  surface. No MCPServer pointer is emitted in apis.yml, because emitting one would
+  credit Bloomberg with an agent surface it does not ship.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
+tools_note: >-
+  No candidate tool list was derived. Deriving one requires an OpenAPI to ground each
+  tool in a real operationId, and this repository has none - Bloomberg publishes no
+  machine-readable contract. Inventing tool names from marketing copy would be
+  fabrication.
+third_party_servers:
+  - name: bloomberg-mcp
+    repo: https://github.com/tallinn102/bloomberg-mcp
+    first_party: false
+    note: >-
+      Community server; data access layer for Bloomberg Terminal via blpapi. Requires a
+      Bloomberg Terminal running and logged in on the same machine (localhost:8194).
+  - name: Bloomberg-MCP
+    repo: https://github.com/QmQsun/Bloomberg-MCP
+    first_party: false
+    note: Community fork of tallinn102/bloomberg-mcp; BDP/BDH/BDS/BQL/TA tooling.
+  - name: bloomberg-mcp (sbctreasury)
+    repo: https://github.com/sbctreasury/bloomberg-mcp
+    first_party: false
+    note: Community server listed on Glama and LobeHub.
+third_party_note: >-
+  These are recorded only to make the absence legible: the demand for a Bloomberg agent
+  surface is being met by unaffiliated developers wrapping a local Terminal session.
+  They are not Bloomberg artifacts and confer no Bloomberg agent readiness.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
