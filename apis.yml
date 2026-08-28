@@ -9,6 +9,17 @@ description: Bloomberg L.P. delivers financial market data, reference data, pric
   OpenAPI, AsyncAPI, GraphQL schema or MCP server; its API reference for the REST surface sits behind the Bloomberg
   Enterprise Console, while the BLPAPI SDK reference, downloads and version archive are fully public.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: contract
   onboarding: sales-led
