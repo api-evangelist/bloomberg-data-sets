@@ -88,6 +88,11 @@ apis:
   baseURL: https://api.bloomberg.com/eap
   tags:
   - Bulk Data
+  - Data Feed
+  - Historical Data
+  - Quantitative Research
+  tags_raw:
+  - Bulk Data
   - Data Feeds
   - Historical Data
   - Quantitative Research
