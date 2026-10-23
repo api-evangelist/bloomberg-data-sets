@@ -3,10 +3,11 @@
   "feeds": [
     {
       "source": "https://www.techatbloomberg.com/",
-      "feed_url": "https://www.techatbloomberg.com/blog/feed/",
-      "title": "",
-      "saved": 4,
-      "method": "discovered"
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://www.techatbloomberg.com/blog/feed/",
+      "error": "HTTPError"
     },
     {
       "source": "https://github.com/bloomberg",
@@ -17,5 +18,5 @@
     }
   ],
   "post_count": 4,
-  "fetched": "2026-10-10T13:15:00Z"
+  "fetched": "2026-10-17T14:53:57Z"
 }
