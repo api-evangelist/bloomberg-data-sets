@@ -1,4 +1,4 @@
-# Bloomberg Data Sets (bloomberg-data-sets)
+# Bloomberg Data Sets
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,107 +64,119 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Bloomberg provides comprehensive financial data, analytics, and news services through various APIs and data feeds, serving financial professionals worldwide
+Bloomberg L.P. delivers financial market data, reference data, pricing, regulatory and alternative data to financial professionals through two machine-facing surfaces. The Bloomberg Open API (BLPAPI) is a native session protocol with first-party SDKs in C++, Java, C# (.NET) and Python, covering real-time market data, reference data, historical data and intraday tick data across the Desktop API, Server API and B-PIPE products. Bloomberg Data License adds bulk and per-security delivery of the same content catalogue over a JWT-authenticated hypermedia REST API at api.bloomberg.com/eap, over SFTP, and natively in the major cloud providers. Bloomberg publishes no OpenAPI, AsyncAPI, GraphQL schema or MCP server; its API reference for the REST surface sits behind the Bloomberg Enterprise Console, while the BLPAPI SDK reference, downloads and version archive are fully public.
 
-**URL:** [Visit APIs.json URL](https://www.bloomberg.com/professional/product/data-management/)
+**Areas:** Analytics · Datasets · Financial Services · Market Data · Reference Data · Historical Data · Financial Data · Data Licensing
 
-## Timestamps
+## Bloomberg Data Sets on APIs.io
 
-- **Created:** 2024 
-- **Modified:** 2024 
+Everything profiled for Bloomberg Data Sets is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bloomberg-data-sets/](https://apis.io/providers/bloomberg-data-sets/)** — or go straight to one of the APIs or properties below.
 
-## APIs
+### APIs (2)
 
-### Bloomberg Data API
-Provides programmatic access to Bloomberg's extensive financial data including market data, reference data, historical data, and real-time information
+- [Bloomberg Data API](https://apis.io/apis/bloomberg-data-sets/bloomberg-data-api/) — The Bloomberg Open API (BLPAPI) provides programmatic access to Bloomberg's market data, reference data, historical data and intraday tick data. It is an…
+- [Bloomberg Data License](https://apis.io/apis/bloomberg-data-sets/bloomberg-data-license/) — Bloomberg Data License provides bulk and per-security delivery of Bloomberg's reference, pricing, regulatory and alternative data for quantitative analysis,…
 
-**Human URL:** [https://www.bloomberg.com/professional/support/api-library/](https://www.bloomberg.com/professional/support/api-library/)
+### Published properties
 
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-#### Tags:
+#### Security (3)
 
- - Financial Data, Market Data, Real-time, Historical Data, Reference Data
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Bloomberg Data Sets Authentication](https://apis.io/security/bloomberg-data-sets/bloomberg-data-sets-authentication/)
+- [Bloomberg Data Sets Domain Security](https://apis.io/security/bloomberg-data-sets/bloomberg-data-sets-domain-security/)
+- [Bloomberg Data Sets Vulnerability Disclosure](https://apis.io/security/bloomberg-data-sets/bloomberg-data-sets-vulnerability-disclosure/)
 
-- [Documentation](https://www.bloomberg.com/professional/support/api-library/)
-- [Authentication](https://www.bloomberg.com/professional/support/api-library/#authentication)
-- [Pricing](https://www.bloomberg.com/professional/products/)
-- [Terms of Service](https://www.bloomberg.com/notices/tos/)
+#### OAuth scopes (1)
 
-### Bloomberg Terminal Connect API
-Enables integration with Bloomberg Terminal functionality including market monitors, portfolio analysis, and trading tools
+The permissions the API asks for.
 
-**Human URL:** [https://www.bloomberg.com/professional/product/bloomberg-terminal/](https://www.bloomberg.com/professional/product/bloomberg-terminal/)
+- [Bloomberg Data Sets Scopes](https://apis.io/scopes/bloomberg-data-sets/bloomberg-data-sets-scopes/)
 
+#### Plans and pricing (1)
 
-#### Tags:
+Published plans, tiers and prices.
 
- - Bloomberg Terminal, Trading, Portfolio Management, Analytics
+- [Bloomberg Data Sets Plans Pricing](https://apis.io/plans/bloomberg-data-sets/bloomberg-data-sets-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://www.bloomberg.com/professional/support/api-library/)
-- [SDK](https://www.bloomberg.com/professional/support/api-library/#downloads)
+Published request limits.
 
-### Bloomberg Enterprise Access Point (BEAP)
-Server-based API solution for accessing Bloomberg data across an organization with centralized license management
+- [Bloomberg Data Sets Rate Limits](https://apis.io/rate-limits/bloomberg-data-sets/bloomberg-data-sets-rate-limits/)
 
-**Human URL:** [https://www.bloomberg.com/professional/product/enterprise-access-point/](https://www.bloomberg.com/professional/product/enterprise-access-point/)
+#### FinOps (1)
 
+What the API costs to run, by operation.
 
-#### Tags:
+- [Bloomberg Data Sets Finops](https://apis.io/finops/bloomberg-data-sets/bloomberg-data-sets-finops/)
 
- - Enterprise, Server API, Bulk Data, Data Distribution
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://www.bloomberg.com/professional/support/api-library/)
-- [Support](https://www.bloomberg.com/professional/support/)
+- [Website](https://bloomberg.com)
+- [Documentation](https://professional.bloomberg.com/support/documentation/)
+- [Getting started](https://professional.bloomberg.com/support/api-library/)
+- [API reference](https://bloomberg.github.io/blpapi-docs/)
+- [Support](https://professional.bloomberg.com/support/)
+- [Blog](https://www.techatbloomberg.com/)
+- [Security](https://www.bloomberg.com/.well-known/security.txt)
+- [Terms of service](https://www.bloomberg.com/notices/tos/)
+- [Privacy policy](https://www.bloomberg.com/notices/privacy/)
+- [GitHub](https://github.com/bloomberg)
 
-### Bloomberg Data License
-Subscription-based service providing bulk downloads of historical and reference data for quantitative analysis and research
+## API Evangelist rating
 
-**Human URL:** [https://www.bloomberg.com/professional/product/data-license/](https://www.bloomberg.com/professional/product/data-license/)
+**Kin Score 34.7** — thin · rubric 0.24.0 · scored 2026-10-17
 
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 71.4 |
+| Access clarity | 21.1 |
 
-#### Tags:
+**Agent readiness 16.2** — agent-aware
 
- - Bulk Data, Historical Data, Quantitative Research, Data Feeds
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-#### Properties
+**Regulatory alignment 43.5** — Securities & Market Data
 
-- [Documentation](https://www.bloomberg.com/professional/product/data-license/)
-- [Pricing](https://www.bloomberg.com/professional/products/)
-- [Data Catalog](https://www.bloomberg.com/professional/product/data-license/#data-catalog)
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bloomberg-data-sets/](https://apis.io/providers/bloomberg-data-sets/).
 
-### Bloomberg B-PIPE
-Real-time and delayed market data feed delivering streaming data for trading applications and market surveillance
+## How this profile is made
 
-**Human URL:** [https://www.bloomberg.com/professional/product/b-pipe/](https://www.bloomberg.com/professional/product/b-pipe/)
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Bloomberg Data Sets: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-#### Tags:
+## Open an issue
 
- - Real-time Data, Streaming, Market Feed, Trading Infrastructure
-
-#### Properties
-
-- [Documentation](https://www.bloomberg.com/professional/product/b-pipe/)
-- [Technical Specifications](https://www.bloomberg.com/professional/support/api-library/)
-
-## Common Properties
-
-- [Portal](https://www.bloomberg.com/professional/)
-- [Support](https://www.bloomberg.com/professional/support/)
-- [Getting Started](https://www.bloomberg.com/professional/support/api-library/)
-- [Status](https://www.bloomberg.com/notices/service-status/)
-- [Terms of Service](https://www.bloomberg.com/notices/tos/)
-- [Privacy Policy](https://www.bloomberg.com/notices/privacy/)
-- [Contact](https://www.bloomberg.com/professional/request-demo/)
-
-## Maintainers
-
-**FN:** Bloomberg L.P.
-
-**Email:** support@bloomberg.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bloomberg-data-sets/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
